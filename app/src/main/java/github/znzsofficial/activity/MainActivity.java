@@ -183,27 +183,6 @@ public class MainActivity extends AppCompatActivity {
     }
   }
 
-  private void alertDialogShow() {
-    new MaterialAlertDialogBuilder(this)
-        .setTitle("权限申请需求")
-        .setMessage("本软件需要申请管理所有文件权限才能正常使用")
-        .setPositiveButton(
-            "确定",
-            new DialogInterface.OnClickListener() {
-              @Override
-              public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
-                  intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
-                  startActivity(intent.setData(Uri.parse("package:" + getPackageName())));
-                }
-              }
-            })
-        .setNegativeButton("取消", null)
-        .create()
-        .show();
-  }
-
   public void initView() {
     ExtendedFloatingActionButton efab = mBinding.fab;
     efab.setOnClickListener(
